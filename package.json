@@ -1,0 +1,19 @@
+{
+  "name": "ux-to-frost",
+  "version": "1.0.0",
+  "description": "Convert Confluence Pages to github markdown",
+  "main": "Confluence-html-to-github-markdown.js",
+  "dependencies": {
+    "fs": "0.0.2",
+    "path": "^0.12.7",
+    "sync-exec": "^0.6.2"
+  },
+  "devDependencies": {
+
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eric White",
+  "license": "MIT"
+}
