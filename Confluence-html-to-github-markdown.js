@@ -4,15 +4,15 @@ var child_process = require('child_process')
 var exec = require('sync-exec')
 var path = require('path');
 
-var divePath = process.cwd() + "/Confluence-space-export";
-var attachmentsExportPath = process.cwd() + "/public/assets/images/"
+var divePath = process.cwd();
+var attachmentsExportPath = "/public/assets/images/"
 var markdownImageReference = "assets/images/"
 // print process.argv
 process.argv.forEach(function (val, index, array) {
   if (index === 2){
     divePath = process.cwd() + "/" + val;
   }else if (index === 3){
-    attachmentsExportPath = process.cwd() + "/" + val
+    attachmentsExportPath = val
   }else if(index === 4){
     markdownImageReference = val
   }
@@ -42,8 +42,11 @@ function dive(dir) {
         var match = content.match(titleRegex)
         if (match != null && match.length > 1) {
           //          console.log(match[1])
-          var outputFile = process.cwd() + "/Markdown/" + match[1].replace(/ /g, "-").replace(/[(|)]/g, "") + ".md"
+          mkdirpSync("/Markdown")
+//          console.log("Making Markdown")
+          var outputFile = "Markdown/" + match[1].replace(/ /g, "-").replace(/[(|)]/g, "") + ".md"
           var out = exec("pandoc -f html -t markdown_github -o " + outputFile + " " + path, {cwd: process.cwd()})
+          console.log(out)
             //images
             //          console.log("Reading : " + outputFile)
           var content = fs.readFileSync(outputFile, 'utf8')
@@ -64,8 +67,8 @@ function dive(dir) {
 //              var img_content = fs.readFileSync(dir + "/" + img);
 //              fs.writeFileSync(fileName, img);
               fs.accessSync(dir + "/" + img, fs.F_OK);
-              fs.createReadStream(dir + "/" + img).pipe(fs.createWriteStream(fileName));
-              console.log("Wrote: " + dir + "/" + img + "\n To: " + fileName)
+              fs.createReadStream(dir + "/" + img).pipe(fs.createWriteStream(process.cwd() + "/" + fileName));
+              console.log("Wrote: " + dir + "/" + img + "\n To: " + process.cwd() + "/" + fileName)
             } catch (e) {
               console.log("Can't read: " + dir + "/" + img)
             }
