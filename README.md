@@ -3,7 +3,13 @@ Convert Confluence Html export to Github Markdown
 
 # Installation
 `npm install -g confluence-to-github-markdown`
-
+# Usage
+  `confluence-to-github-markdown`
+  `confluence-to-github-markdown <htmlFilesDirectory> <attachmentsExportPath> <markdownImageReference>`
+  ### Defaults
+  * <htmlFilesDirectory> : `Current Working Directory`
+  * <attachmentsExportPath> : `"/public/assets/images/"` Where to export images
+  * <markdownImageReference> : `"assets/images/"` Image reference in markdown files
 # Requirements
  **Must have pandoc command line tool**
  http://pandoc.org/installing.html
