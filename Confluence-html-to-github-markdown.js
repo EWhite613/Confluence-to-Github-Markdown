@@ -2,7 +2,22 @@ var fs = require('fs')
 var child_process = require('child_process')
 var exec = require('sync-exec')
 var path = require('path');
-dive("Confluence-space-export")
+
+var divePath = "Confluence-space-export";
+var attachmentsExportPath = "public/assets/images/"
+var markdownImageReference = "assets/images/"
+// print process.argv
+process.argv.forEach(function (val, index, array) {
+  if (index === 2){
+    divePath = val;
+  }else if (index === 3){
+    attachmentsExportPath = val
+  }else if(index === 4){
+    markdownImageReference = val
+  }
+});
+
+dive(divePath)
 
 function dive(dir) {
   var list = []
@@ -39,7 +54,7 @@ function dive(dir) {
             if (attachments == img) {
               return;
             }
-            var fileName = 'public/assets/images/' + attachments;
+            var fileName = attachmentsExportPath + attachments;
             //            console.log("Creating Folder : " + fileName.substr(0, fileName.lastIndexOf('/')))
             mkdirpSync(fileName.substr(0, fileName.lastIndexOf('/')))
               //            console.log("creating filename: " + fileName)
@@ -54,7 +69,7 @@ function dive(dir) {
               console.log("Can't read: " + dir + "/" + img)
             }
           })
-          var lines = content.replace(/(<img src=")([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)/ig, "$1assets/images/$3/$4")
+          var lines = content.replace(/(<img src=")([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)/ig, "$"+ markdownImageReference +"$3/$4")
 
           fs.writeFileSync(outputFile, lines)
         }

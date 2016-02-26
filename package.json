@@ -2,6 +2,9 @@
   "name": "ux-to-frost",
   "version": "1.0.0",
   "description": "Convert Confluence Pages to github markdown",
+  "bin":{
+    "confluence-to-github-markdown": "./Confluence-html-to-github-markdown.js"
+  },
   "main": "Confluence-html-to-github-markdown.js",
   "dependencies": {
     "fs": "0.0.2",
