@@ -11,10 +11,10 @@ Convert Confluence Html export to Github Markdown
   
   `confluence-to-github-markdown <htmlFilesDirectory> <attachmentsExportPath> <markdownImageReference>`
   
-  ### Defaults
-  * <htmlFilesDirectory> : `Current Working Directory`
-  * <attachmentsExportPath> : `"/public/assets/images/"` Where to export images
-  * <markdownImageReference> : `"assets/images/"` Image reference in markdown files
+### Defaults
+  * `<htmlFilesDirectory>` : `Current Working Directory`
+  * `<attachmentsExportPath>` : `"/public/assets/images/"` Where to export images
+  * `<markdownImageReference>` : `"assets/images/"` Image reference in markdown files
 
 
 # Export to HTML
