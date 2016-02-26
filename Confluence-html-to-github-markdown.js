@@ -42,8 +42,8 @@ function dive(dir) {
         var match = content.match(titleRegex)
         if (match != null && match.length > 1) {
           //          console.log(match[1])
-          var outputFile = "Markdown/" + match[1].replace(/ /g, "-").replace(/[(|)]/g, "") + ".md"
-          var out = exec("pandoc -f html -t markdown_github -o " + outputFile + " " + path)
+          var outputFile = process.cwd() + "/Markdown/" + match[1].replace(/ /g, "-").replace(/[(|)]/g, "") + ".md"
+          var out = exec("pandoc -f html -t markdown_github -o " + outputFile + " " + path, {cwd: process.cwd()})
             //images
             //          console.log("Reading : " + outputFile)
           var content = fs.readFileSync(outputFile, 'utf8')
