@@ -4,15 +4,15 @@ var child_process = require('child_process')
 var exec = require('sync-exec')
 var path = require('path');
 
-var divePath = "Confluence-space-export";
-var attachmentsExportPath = "public/assets/images/"
+var divePath = process.cwd() + "/Confluence-space-export";
+var attachmentsExportPath = process.cwd() + "/public/assets/images/"
 var markdownImageReference = "assets/images/"
 // print process.argv
 process.argv.forEach(function (val, index, array) {
   if (index === 2){
-    divePath = val;
+    divePath = process.cwd() + "/" + val;
   }else if (index === 3){
-    attachmentsExportPath = val
+    attachmentsExportPath = process.cwd() + "/" + val
   }else if(index === 4){
     markdownImageReference = val
   }
