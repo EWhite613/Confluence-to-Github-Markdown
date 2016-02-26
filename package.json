@@ -1,11 +1,12 @@
 {
-  "name": "Confluence-to-Github-Markdown",
+  "name": "confluence-to-github-markdown",
   "version": "0.0.0",
   "description": "Convert Confluence Pages to github markdown",
-  "bin":{
+  "bin": {
     "confluence-to-github-markdown": "./Confluence-html-to-github-markdown.js"
   },
   "main": "Confluence-html-to-github-markdown.js",
+  "repository": "git@github.com:EWhite613/Confluence-to-Github-Markdown.git",
   "dependencies": {
     "fs": "0.0.2",
     "path": "^0.12.7",
