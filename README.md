@@ -2,7 +2,9 @@
 Convert Confluence Html export to Github Markdown
 # Requirements
  **Must have pandoc command line tool**
+ 
  http://pandoc.org/installing.html
+
  Make sure it was installed properly by doing `pandoc --version`
 # Installation
 `npm install -g confluence-to-github-markdown`
