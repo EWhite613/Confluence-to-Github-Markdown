@@ -1,6 +1,6 @@
 {
   "name": "confluence-to-github-markdown",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Convert Confluence Pages to github markdown",
   "bin": {
     "confluence-to-github-markdown": "./Confluence-html-to-github-markdown.js"
@@ -21,7 +21,10 @@
     "Confluence to Markdown",
     "Confluence to Github Markdown",
     "ember",
-    "Github Markdown"
+    "Github Markdown",
+    "Images",
+    "export images",
+    "reference images"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

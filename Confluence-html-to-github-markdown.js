@@ -17,7 +17,7 @@ process.argv.forEach(function (val, index, array) {
     markdownImageReference = val
   }
 });
-
+console.log("TEST")
 dive(divePath)
 
 function dive(dir) {
@@ -45,10 +45,10 @@ function dive(dir) {
           mkdirpSync("/Markdown")
 //          console.log("Making Markdown")
           var outputFile = "Markdown/" + match[1].replace(/ /g, "-").replace(/[(|)]/g, "") + ".md"
-          var out = exec("pandoc -f html -t markdown_github -o " + outputFile + " " + path, {cwd: process.cwd()})
+          var out = exec("pandoc -f html -t markdown_github -o " + outputFile + " " + JSON.stringify(path.replace(/ /g, "\ ")), {cwd: process.cwd()})
           console.log(out)
             //images
-            //          console.log("Reading : " + outputFile)
+          console.log("Reading : " + outputFile)
           var content = fs.readFileSync(outputFile, 'utf8')
             //          console.log("Done Reading")
           var matches = uniq(content.match(/(<img src=")([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)/ig))
