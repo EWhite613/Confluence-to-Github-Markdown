@@ -36,8 +36,9 @@ function dive(dir) {
     if (stat && stat.isDirectory()) {
       dive(path);
     } else {
+      console.log(file)
       if (file.endsWith('.html')) {
-        var titleRegex = /<title>(?:Blue Planet : |)([a-z|\s|\(|\)]+)+<\/title>/i
+        var titleRegex = /<title>(?:Blue Planet : |)([a-z|\s|\-|\(|\)]+)+<\/title>/i
         var content = fs.readFileSync(path, 'utf8')
         var match = content.match(titleRegex)
         if (match != null && match.length > 1) {

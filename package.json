@@ -1,6 +1,6 @@
 {
   "name": "confluence-to-github-markdown",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert Confluence Pages to github markdown",
   "bin": {
     "confluence-to-github-markdown": "./Confluence-html-to-github-markdown.js"
