@@ -74,7 +74,7 @@ function dive(dir) {
               console.log("Can't read: " + dir + "/" + img)
             }
           })
-          var lines = content.replace(/(<img src=")([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)/ig, "$"+ markdownImageReference +"$3/$4")
+          var lines = content.replace(/(<img src=")([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)/ig, "$1"+ markdownImageReference +"$3/$4")
 
           fs.writeFileSync(outputFile, lines)
         }
