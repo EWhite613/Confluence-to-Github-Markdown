@@ -17,7 +17,6 @@ process.argv.forEach(function (val, index, array) {
     markdownImageReference = val
   }
 });
-console.log("TEST")
 dive(divePath)
 
 function dive(dir) {
@@ -38,7 +37,7 @@ function dive(dir) {
     } else {
       console.log(file)
       if (file.endsWith('.html')) {
-        var titleRegex = /<title>(?:Blue Planet : |)([a-z|\s|\-|\(|\)]+)+<\/title>/i
+        var titleRegex = /<title>([^<]*)<\/title>/i
         var content = fs.readFileSync(path, 'utf8')
         var match = content.match(titleRegex)
         if (match != null && match.length > 1) {
