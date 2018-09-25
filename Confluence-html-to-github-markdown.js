@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-var fs = require('fs')
-var child_process = require('child_process')
+var fs = require('fs-extra')
 var exec = require('sync-exec')
 var path = require('path');
 
 var divePath = process.cwd();
-var attachmentsExportPath = "/public/assets/images/"
+var attachmentsExportPath = "public/assets/images/"
 var markdownImageReference = "assets/images/"
 // print process.argv
 process.argv.forEach(function (val, index, array) {
@@ -26,31 +25,30 @@ function dive(dir) {
   list = fs.readdirSync(dir);
   list.forEach(function (file) {
     // Full path of that file
-    var path = dir + "/" + file
+    var p = path.join(dir , file)
 
     // Get the file's stats
-    stat = fs.statSync(path)
+    stat = fs.statSync(p)
 
     // If the file is a directory
     if (stat && stat.isDirectory()) {
-      dive(path);
+      dive(p);
     } else {
       console.log(file)
       if (file.endsWith('.html')) {
         var titleRegex = /<title>([^<]*)<\/title>/i
-        var content = fs.readFileSync(path, 'utf8')
+        var content = fs.readFileSync(p, 'utf8')
         var match = content.match(titleRegex)
         if (match != null && match.length > 1) {
-          //          console.log(match[1])
-          mkdirpSync("/Markdown")
-//          console.log("Making Markdown")
-          var outputFile = "Markdown/" + match[1].replace(/ /g, "-").replace(/[(|)]/g, "") + ".md"
-          var out = exec("pandoc -f html -t markdown_github -o " + outputFile + " " + JSON.stringify(path.replace(/ /g, "\ ")), {cwd: process.cwd()})
+          fs.ensureDir("Markdown")
+          var sanitizedfilename = match[1].replace(/[^0-9a-zA-Z]/g,"_")
+          var outputFile = path.join("Markdown", sanitizedfilename + ".md")
+          var command = "pandoc -f html -t markdown -o " + outputFile + " " + p
+          var out = exec(command, {cwd: process.cwd()})
           console.log(out)
             //images
           console.log("Reading : " + outputFile)
           var content = fs.readFileSync(outputFile, 'utf8')
-            //          console.log("Done Reading")
           var matches = uniq(content.match(/(<img src=")([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)\/([a-z||_|0-9|.|]+)/ig))
           matches.forEach(function (img) {
             img = img.replace('<img src="', '')
