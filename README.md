@@ -30,7 +30,7 @@ Note that if the converter does not know how to handle a style, HTML to Markdown
 4. Decide whether you need to customise the export:
   * Select Normal Export to produce an HTML file containing all the pages that you have permission to view.
   * Select Custom Export if you want to export a subset of pages, or to exclude comments from the export. 
-5. ![Export Pages] (https://confluence.atlassian.com/conf54/files/428803470/confluence_spaceadmin_exportHTML.png)
+5. [Export Pages](https://confluence.atlassian.com/doc/export-content-to-word-pdf-html-and-xml-139475.html#ExportContenttoWord,PDF,HTMLandXML-ExportmultiplepagestoHTML,XML,orPDF)
 6. Extract zip
 7. Open shell in extracted zip
 8. run `confluence-to-github-markdown` in shell
