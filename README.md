@@ -1,3 +1,5 @@
+# Not maintained
+May want to fork: https://github.com/meridius/confluence-to-markdown
 # Confluence-to-Github-Markdown
 Convert Confluence Html export to Github Markdown
 # Requirements
